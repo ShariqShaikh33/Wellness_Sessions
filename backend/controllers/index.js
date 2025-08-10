@@ -1,2 +1,2 @@
-export * from "./loginUser.controller.js";
-export * from "./registerUser.controller.js";
+export * from "./User/loginUser.controller.js";
+export * from "./User/registerUser.controller.js";

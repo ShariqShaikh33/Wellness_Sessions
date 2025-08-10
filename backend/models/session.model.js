@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const sessionSchema = new Schema(
     {
@@ -27,3 +27,5 @@ const sessionSchema = new Schema(
         timestamps: true,
     }
 )
+
+export const Session = model("Session", sessionSchema);
