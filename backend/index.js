@@ -1,12 +1,13 @@
 import express,{json} from "express";
-import mongoose from "mongoose";
 import { config } from "dotenv";
 import {connect} from "mongoose";
-import { userRouter } from "./routes/index.js";
+import { sessionRouter, userRouter } from "./routes/index.js";
+import cors from "cors";
 
 config();
 const app = express();
 app.use(json());
+app.use(cors());
 
 
 connect(process.env.MONGO_URI)
@@ -18,6 +19,7 @@ connect(process.env.MONGO_URI)
 });
 
 app.use("/api/user", userRouter);
+app.use("/api/session",sessionRouter);
 
 app.get("/",(req,res)=>{
     res.send("Hello Server");

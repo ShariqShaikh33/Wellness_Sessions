@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { config } from "dotenv";
-import { User } from "../models/user.model.js";
+import { User } from "../../models/user.model.js";
 
 config();
 export async function registerUser(req,res) {

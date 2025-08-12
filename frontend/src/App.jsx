@@ -10,28 +10,32 @@ import Dashboard from './pages/dashboard/index.jsx';
 import MySessions from "./pages/mySession/index.jsx";
 import SessionEditor from "./pages/sessionEditor/index.jsx";
 import UserLayout from './components/User/Layout/index.jsx';
+import { store } from './store/index.js';
+import {Provider} from "react-redux";
 
 const Home = lazy(()=>import("./pages/index.jsx"));
 
 function App() {
   return(
     <Suspense fallback={<Loading/>}>
-      <Router>
-        <Routes>
-          <Route path='/' element={<Home/>}>
-          
-          </Route>
-          <Route path='/register' element={<Register/>}></Route>
-          <Route path='/login' element={<Login/>}></Route>
-          
-          <Route element={<UserLayout/>}>
-            <Route path='/dashboard' element={<Dashboard/>}></Route>
-            <Route path='/my_sessions' element={<MySessions/>}></Route>
-            <Route path='/session_editor' element={<SessionEditor/>}></Route>
-          </Route>
-          
-        </Routes>
-      </Router>
+      <Provider store = {store}>
+        <Router>
+          <Routes>
+            <Route path='/' element={<Home/>}>
+            
+            </Route>
+            <Route path='/register' element={<Register/>}></Route>
+            <Route path='/login' element={<Login/>}></Route>
+            
+            <Route element={<UserLayout/>}>
+              <Route path='user/dashboard' element={<Dashboard/>}></Route>
+              <Route path='user/my_sessions' element={<MySessions/>}></Route>
+              <Route path='user/session_editor' element={<SessionEditor/>}></Route>
+            </Route>
+            
+          </Routes>
+        </Router>
+      </Provider>
     </Suspense>
   )
 }

@@ -1,4 +1,4 @@
-import { Session } from "../../models/session.model";
+import { Session } from "../../models/session.model.js";
 
 export async function getAllSessions(req,res){
     try{
@@ -8,10 +8,8 @@ export async function getAllSessions(req,res){
             data: sessions
         })
     }
-    catch(e){
-        const error = new Error("Failed to fetch Session data",{
-            cause: e,
-        })
-        return error;
-    }
+    catch(error){
+        console.log("Error in Fetching sessions", error);
+        res.status(500).json({message: "Internal Server Error"})
+    };
 }

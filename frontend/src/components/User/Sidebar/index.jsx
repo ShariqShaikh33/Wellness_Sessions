@@ -12,7 +12,7 @@ function Sidebar() {
       <div className='flex flex-col gap-2 pt-1'>
         {
           SidebarButtonElements.map((element)=>{
-            return <SidebarElement {...element}/>
+            return <SidebarElement key={element.label} {...element}/>
           })
         }
       </div>
